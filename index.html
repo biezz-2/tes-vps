@@ -3,27 +3,59 @@
  
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests; font-src 'self' data:;">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="csrf-token" content="vlK6IcHX8iUTeFx8UnDnJu2gtCAECRdhDpgDk0u8">
-    <link rel="stylesheet" href="https://suratplus.com/assets/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="https://suratplus.com/assets-3/portofolio/css/style.css?version=1.0.1">
-    <link rel="stylesheet" href="https://suratplus.com/assets-3/portofolio/css/preview.css?version=1.0.10">
-    <link rel="stylesheet" href="https://suratplus.com/assets/css/starter.css" />
-    <link rel="stylesheet" href="https://suratplus.com/assets/css/lineicons.css" />
-    <link rel="stylesheet" href="https://suratplus.com/css/subscribe.css?v=3.0.2">
-    <link rel="stylesheet" href="https://suratplus.com/assets-3/css/suratplus-ui-kit.css?version=1.1.8">
+    <!-- Replaced company-hosted CSS with CDN to avoid cross-origin font requests -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="" crossorigin="anonymous" />
+    <!-- Keep AOS for animations -->
     <!-- Favicon -->
     <link rel="icon" href="https://suratplus.com/icon/SuratPlus.png" type="image/x-icon" />
     
 
             <style>
-            .portofolio {
-                margin-bottom: 4rem;
-            }
-        </style>
-        <link rel="stylesheet" href="https://suratplus.com/assets-3\icons\suratplus-icon\sp-icon.min.css?version=1.0.2">
+                .portofolio {
+                    margin-bottom: 4rem;
+                }
+            </style>
+            <!-- Removed remote icon font to avoid CORS request for iconly.woff2 -->
+            <style>
+                /* Prevent browser trying to download remote 'sp-icon' font by forcing system font
+                   for any class that starts with sp-icon- and providing emoji fallbacks. */
+                [class^="sp-icon-"], [class*=" sp-icon-"] {
+                    display: inline-block;
+                    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial !important;
+                    font-style: normal !important;
+                    line-height: 1 !important;
+                    vertical-align: middle !important;
+                    width: 1em;
+                    height: 1em;
+                    text-align: center;
+                }
+                .sp-icon-files::before { content: "📄"; }
+                .sp-icon-check-circle-fill::before { content: "✅"; }
+                .sp-icon-exclamation-circle-fill::before { content: "❗"; }
+                .sp-icon-download::before { content: "⬇️"; }
+                .sp-icon-link-45deg::before { content: "🔗"; }
+                .sp-icon-pencil-square::before { content: "✏️"; }
+                .sp-icon-palette::before { content: "🎨"; }
+                .sp-icon-files, .sp-icon-check-circle-fill, .sp-icon-exclamation-circle-fill,
+                .sp-icon-download, .sp-icon-link-45deg, .sp-icon-pencil-square, .sp-icon-palette {
+                    font-size: 0.95em;
+                }
+            </style>
+            <style>
+                /* Override any remote @font-face named 'sp-icon' so browser won't attempt to fetch
+                   iconly.* fonts from suratplus.com. This uses a local/system font as the sp-icon face. */
+                @font-face {
+                    font-family: 'sp-icon';
+                    src: local('Segoe UI Symbol'), local('Noto Color Emoji'), local('Arial');
+                    font-weight: 400;
+                    font-style: normal;
+                    font-display: block;
+                }
+            </style>
             
     
 <meta property="og:image"
@@ -46,41 +78,12 @@
         --filter: invert(25%) sepia(100%) saturate(1724%) hue-rotate(238deg) brightness(87%) contrast(95%);
     }
 </style>
-<link rel="stylesheet" href="https://suratplus.com/assets-3/portofolio/css/portofolio-1.css?v=1.0.10" />
-<link rel="stylesheet" href="https://suratplus.com/landing-page-baru/css/testimonial-01.css?v=1.0.1">
+<!-- Removed site-specific portfolio CSS that referenced icon fonts; minimal visual may change. -->
+<!-- If you want full original styling, provide local copies of those CSS files or enable CORS on the origin. -->
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <title>Portofolio Syarif Attabi</title>
 
-    <!-- Google Tag Manager -->
-    <script>
-        (function(w, d, s, l, i) {
-            w[l] = w[l] || [];
-            w[l].push({
-                'gtm.start': new Date().getTime(),
-                event: 'gtm.js'
-            });
-            var f = d.getElementsByTagName(s)[0],
-                j = d.createElement(s),
-                dl = l != 'dataLayer' ? '&l=' + l : '';
-            j.async = true;
-            j.src =
-                'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
-            f.parentNode.insertBefore(j, f);
-        })(window, document, 'script', 'dataLayer', 'GTM-NJTWDPN5');
-    </script>
-    <!-- End Google Tag Manager -->
-
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-P05WXML3TG"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-        gtag('js', new Date());
-        gtag('config', 'G-P05WXML3TG');
-    </script>
+    <!-- Removed Google Tag Manager and Google Analytics to avoid cross-domain cookie warnings during local preview -->
 </head>
 
 <body>
@@ -496,8 +499,7 @@
                                                 <path
                                                     d="M22 7C20.5 7 19.338 8.685 20.402 10.194C20.937 10.953 20.808 11.41 20.447 11.943C19.682 13.07 18.575 14 17 14C14.478 14 13.146 11.917 12.869 10.152C12.773 9.538 12.719 9.078 13.305 8.508C13.801 8.027 14.131 7.357 13.95 6.561C13.754 5.704 12.987 5 12 5C10.896 5 10 5.896 10 7C10 7.605 10.293 8.118 10.695 8.508C11.281 9.078 11.226 9.538 11.131 10.152C10.853 11.916 9.521 14 7 14C5.425 14 4.318 13.07 3.553 11.942C3.191 11.41 3.062 10.953 3.598 10.194C4.662 8.685 3.5 7 2 7C0.896 7 0 7.896 0 9C0 9.797 0.464 10.495 1.144 10.808C1.91272 11.1611 1.99207 11.9996 1.99932 12.8032C2.00038 12.9202 2.01026 13.0369 2.03066 13.1521L3.30551 20.3489C3.4747 21.304 4.30486 22 5.27485 22H18.7619C19.7355 22 20.5677 21.2988 20.7329 20.3393L21.971 13.1474C21.9903 13.0353 21.9996 12.9218 22.0006 12.8081C22.0076 12.003 22.0857 11.1619 22.856 10.808C23.536 10.495 24 9.797 24 9C24 7.896 23.103 7 22 7Z" />
                                             </svg>Edit Link</button>
-                                                                        <button onclick="openPortofolioInNewTab()" type="button"
-                                        class="w-100 sp-btn sp-btn-primary">Lihat Portofolio</button>
+                                                                        <a target="_blank" rel="noopener" href="https://portofol.io/attabi-8669" class="w-100 sp-btn sp-btn-primary d-inline-block text-center">Lihat Portofolio</a>
                                 </div>
                             </form>
                         </div>
@@ -686,12 +688,12 @@
                 </div>
                 <div class="modal-body">
                     <div class="modal-title">Pilih Template</div>
-                    <div class="color-picker-wrapper mobile">
-                        <span onclick="changeThemeColor(this)" data-color-id="1" class="color-picker-item"></span>
-                        <span onclick="changeThemeColor(this)" data-color-id="2" class="color-picker-item"></span>
-                        <span onclick="changeThemeColor(this)" data-color-id="3" class="color-picker-item"></span>
-                        <span onclick="changeThemeColor(this)" data-color-id="4" class="color-picker-item"></span>
-                        <span onclick="changeThemeColor(this)" data-color-id="5" class="color-picker-item"></span>
+                        <div class="color-picker-wrapper mobile">
+                        <span data-change-theme data-color-id="1" class="color-picker-item"></span>
+                        <span data-change-theme data-color-id="2" class="color-picker-item"></span>
+                        <span data-change-theme data-color-id="3" class="color-picker-item"></span>
+                        <span data-change-theme data-color-id="4" class="color-picker-item"></span>
+                        <span data-change-theme data-color-id="5" class="color-picker-item"></span>
                     </div>
                     <div class="row gy-4 justify-content-center">
                                                                                     <div
@@ -714,7 +716,7 @@
                                                     d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
                                             </svg> Dipakai</button>
                                         <button class="sp-btn sp-btn-primary btn-use-template w-100 mt-2"
-                                            onclick="changeTemplate(1, this)">Pakai
+                                            data-change-template="1">Pakai
                                             Template</button>
                                     </div>
                                 </div>
@@ -738,7 +740,7 @@
                                                     d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
                                             </svg> Dipakai</button>
                                         <button class="sp-btn sp-btn-primary btn-use-template w-100 mt-2"
-                                            onclick="changeTemplate(2, this)">Pakai
+                                            data-change-template="2">Pakai
                                             Template</button>
                                     </div>
                                 </div>
@@ -762,7 +764,7 @@
                                                     d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
                                             </svg> Dipakai</button>
                                         <button class="sp-btn sp-btn-primary btn-use-template w-100 mt-2"
-                                            onclick="changeTemplate(4, this)">Pakai
+                                            data-change-template="4">Pakai
                                             Template</button>
                                     </div>
                                 </div>
@@ -786,7 +788,7 @@
                                                     d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
                                             </svg> Dipakai</button>
                                         <button class="sp-btn sp-btn-primary btn-use-template w-100 mt-2"
-                                            onclick="changeTemplate(5, this)">Pakai
+                                            data-change-template="5">Pakai
                                             Template</button>
                                     </div>
                                 </div>
@@ -810,7 +812,7 @@
                                                     d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
                                             </svg> Dipakai</button>
                                         <button class="sp-btn sp-btn-primary btn-use-template w-100 mt-2"
-                                            onclick="changeTemplate(6, this)">Pakai
+                                            data-change-template="6">Pakai
                                             Template</button>
                                     </div>
                                 </div>
@@ -834,7 +836,7 @@
                                                     d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
                                             </svg> Dipakai</button>
                                         <button class="sp-btn sp-btn-primary btn-use-template w-100 mt-2"
-                                            onclick="changeTemplate(7, this)">Pakai
+                                            data-change-template="7">Pakai
                                             Template</button>
                                     </div>
                                 </div>
@@ -858,7 +860,7 @@
                                                     d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
                                             </svg> Dipakai</button>
                                         <button class="sp-btn sp-btn-primary btn-use-template w-100 mt-2"
-                                            onclick="changeTemplate(8, this)">Pakai
+                                            data-change-template="8">Pakai
                                             Template</button>
                                     </div>
                                 </div>
@@ -882,7 +884,7 @@
                                                     d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
                                             </svg> Dipakai</button>
                                         <button class="sp-btn sp-btn-primary btn-use-template w-100 mt-2"
-                                            onclick="changeTemplate(9, this)">Pakai
+                                            data-change-template="9">Pakai
                                             Template</button>
                                     </div>
                                 </div>
@@ -906,7 +908,7 @@
                                                     d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
                                             </svg> Dipakai</button>
                                         <button class="sp-btn sp-btn-primary btn-use-template w-100 mt-2"
-                                            onclick="changeTemplate(10, this)">Pakai
+                                            data-change-template="10">Pakai
                                             Template</button>
                                     </div>
                                 </div>
@@ -915,14 +917,13 @@
 
                 <div class="modal-footer">
                     <div class="color-picker-wrapper desktop">
-                        <span onclick="changeThemeColor(this)" data-color-id="1" class="color-picker-item"></span>
-                        <span onclick="changeThemeColor(this)" data-color-id="2" class="color-picker-item"></span>
-                        <span onclick="changeThemeColor(this)" data-color-id="3" class="color-picker-item"></span>
-                        <span onclick="changeThemeColor(this)" data-color-id="4" class="color-picker-item"></span>
-                        <span onclick="changeThemeColor(this)" data-color-id="5" class="color-picker-item"></span>
+                        <span data-change-theme data-color-id="1" class="color-picker-item"></span>
+                        <span data-change-theme data-color-id="2" class="color-picker-item"></span>
+                        <span data-change-theme data-color-id="3" class="color-picker-item"></span>
+                        <span data-change-theme data-color-id="4" class="color-picker-item"></span>
+                        <span data-change-theme data-color-id="5" class="color-picker-item"></span>
                     </div>
-                    <button onclick="SubmitChangeTemplate(this)" type="button" class="sp-btn sp-btn-primary">Simpan
-                        Perubahan</button>
+                    <button type="button" class="sp-btn sp-btn-primary">Simpan Perubahan</button>
                 </div>
             </div>
         </div>
@@ -936,11 +937,10 @@
     <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     // const isHasPortofolioSubscription = 0; // Dihapus karena tidak terpakai
     </script>
-    <script src="https://suratplus.com/assets/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="https://suratplus.com/assets-3/portofolio/js/fullscreen-img.js?version=1.0.3"></script>
-    <!-- Script dan API yang tidak terpakai telah dihapus sesuai permintaan -->
+    <!-- Removed fullscreen and site-specific scripts that referenced remote fonts or APIs to avoid CORS and JSON errors. -->
         <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@latest/dist/lenis.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
@@ -1185,7 +1185,7 @@
     })
 </script>
 
-<script src="https://suratplus.com/assets/js/tiny-slider.js"></script>
+<!-- Removed site-hosted tiny-slider to avoid remote script requests; add local or CDN slider if needed. -->
 
 
    
